@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>System Scan</title>
+<style>
+    body {
+        background: black;
+        color: #00ffcc;
+        font-family: monospace;
+        text-align: center;
+        padding-top: 100px;
+    }
+    .box {
+        border: 1px solid #00ffcc;
+        padding: 30px;
+        width: 400px;
+        margin: auto;
+        border-radius: 10px;
+    }
+    button {
+        padding: 10px 20px;
+        margin-top: 20px;
+        background: #00ffcc;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>🔍 Scanning Data...</h2>
+    <p id="text">Initializing system...</p>
+    <button onclick="nextStep()">Continue</button>
+</div>
+
+<script>
+let step = 0;
+
+function nextStep() {
+    step++;
+    let text = document.getElementById("text");
+
+    if (step === 1) {
+        text.innerHTML = "Accessing private data...";
+    }
+    else if (step === 2) {
+        text.innerHTML = "Data found related to YOU...";
+    }
+    else if (step === 3) {
+        text.innerHTML = "This might be serious...";
+    }
+    else if (step === 4) {
+        text.innerHTML = "Are you sure you want to continue?";
+    }
+    else if (step === 5) {
+        document.body.innerHTML = `
+            <h1 style="color:red;">💣 APRIL FOOL 😂😂</h1>
+            <h2>Relax my love ❤️</h2>
+        `;
+    }
+}
+</script>
+
+</body>
+</html>
