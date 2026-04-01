@@ -1,67 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>System Scan</title>
+<title>Secure Access Portal</title>
+
 <style>
-    body {
-        background: black;
-        color: #00ffcc;
-        font-family: monospace;
-        text-align: center;
-        padding-top: 100px;
-    }
-    .box {
-        border: 1px solid #00ffcc;
-        padding: 30px;
-        width: 400px;
-        margin: auto;
-        border-radius: 10px;
-    }
-    button {
-        padding: 10px 20px;
-        margin-top: 20px;
-        background: #00ffcc;
-        border: none;
-        cursor: pointer;
-        font-weight: bold;
-    }
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #0b0f14;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.container {
+    background: #111827;
+    padding: 30px;
+    border-radius: 12px;
+    width: 350px;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(0,255,150,0.2);
+}
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: none;
+}
+button {
+    padding: 10px 20px;
+    background: #00ffcc;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.hidden {
+    display: none;
+}
+.loading {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #00ffcc;
+}
 </style>
+
 </head>
 
 <body>
 
-<div class="box">
-    <h2>🔍 Scanning Data...</h2>
-    <p id="text">Initializing system...</p>
-    <button onclick="nextStep()">Continue</button>
+<div class="container" id="step1">
+    <h2>🔒 Secure Verification</h2>
+    <p>Restricted system access</p>
+    <input type="text" value="(Her Name Here)" id="name">
+    <button onclick="step2()">Verify Identity</button>
+</div>
+
+<div class="container hidden" id="step2">
+    <h2>📲 OTP Verification</h2>
+    <p>Enter 6-digit code sent</p>
+    <input type="text" placeholder="******">
+    <button onclick="step3()">Submit</button>
+</div>
+
+<div class="container hidden" id="step3">
+    <h2>🔍 Scanning...</h2>
+    <div class="loading" id="scanText">Initializing...</div>
 </div>
 
 <script>
-let step = 0;
+function step2() {
+    document.getElementById('step1').classList.add('hidden');
+    document.getElementById('step2').classList.remove('hidden');
+}
 
-function nextStep() {
-    step++;
-    let text = document.getElementById("text");
+function step3() {
+    document.getElementById('step2').classList.add('hidden');
+    document.getElementById('step3').classList.remove('hidden');
 
-    if (step === 1) {
-        text.innerHTML = "Accessing private data...";
-    }
-    else if (step === 2) {
-        text.innerHTML = "Data found related to YOU...";
-    }
-    else if (step === 3) {
-        text.innerHTML = "This might be serious...";
-    }
-    else if (step === 4) {
-        text.innerHTML = "Are you sure you want to continue?";
-    }
-    else if (step === 5) {
-        document.body.innerHTML = `
-            <h1 style="color:red;">💣 APRIL FOOL 😂😂</h1>
-            <h2>Relax my love ❤️</h2>
-        `;
-    }
+    let text = document.getElementById("scanText");
+
+    let steps = [
+        "Connecting to secure database...",
+        "Fetching personal data...",
+        "Sensitive records detected...",
+        "Analyzing relationship data...",
+        "⚠️ Critical emotional data found..."
+    ];
+
+    let i = 0;
+
+    let interval = setInterval(() => {
+        text.innerHTML = steps[i];
+        i++;
+        if(i === steps.length){
+            clearInterval(interval);
+            setTimeout(showResult, 1500);
+        }
+    }, 1200);
+}
+
+function showResult() {
+    document.body.innerHTML = `
+        <div style="text-align:center;">
+            <h1 style="color:#ff4d4d;">💣 APRIL FOOOOL 😂😂</h1>
+            <h2>System says: You are guilty...</h2>
+            <p>Of stealing my heart ❤️😌</p>
+        </div>
+    `;
 }
 </script>
 
