@@ -2,49 +2,56 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Secure Access Portal</title>
+<title>Secure Cloud Access</title>
 
 <style>
 body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: #0b0f14;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    margin:0;
+    font-family:'Segoe UI',sans-serif;
+    background:#0b0f14;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
 }
+
 .container {
-    background: #111827;
-    padding: 30px;
-    border-radius: 12px;
-    width: 350px;
-    text-align: center;
-    box-shadow: 0 0 30px rgba(0,255,150,0.2);
+    background:#111827;
+    padding:30px;
+    border-radius:12px;
+    width:380px;
+    text-align:center;
+    box-shadow:0 0 40px rgba(0,255,150,0.2);
 }
+
 input {
-    width: 90%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 6px;
-    border: none;
+    width:90%;
+    padding:10px;
+    margin:10px 0;
+    border-radius:6px;
+    border:none;
 }
+
 button {
-    padding: 10px 20px;
-    background: #00ffcc;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
+    padding:10px 20px;
+    background:#00ffcc;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
 }
-.hidden {
-    display: none;
-}
-.loading {
-    margin-top: 20px;
-    font-size: 14px;
-    color: #00ffcc;
+
+.hidden { display:none; }
+
+.loading { color:#00ffcc; margin-top:15px; }
+
+.story {
+    max-height:400px;
+    overflow-y:auto;
+    text-align:left;
+    font-size:14px;
+    line-height:1.6;
 }
 </style>
 
@@ -52,66 +59,128 @@ button {
 
 <body>
 
-<div class="container" id="step1">
-    <h2>🔒 Secure Verification</h2>
-    <p>Restricted system access</p>
-    <input type="text" value="(Her Name Here)" id="name">
-    <button onclick="step2()">Verify Identity</button>
+<!-- LOGIN -->
+<div class="container" id="login">
+    <h2>☁ Secure Cloud Access</h2>
+    <p>Authorized Users Only</p>
+    <input placeholder="Username" value="simran">
+    <input placeholder="Password" value="143143">
+    <button onclick="next('scan')">Login</button>
 </div>
 
-<div class="container hidden" id="step2">
-    <h2>📲 Cvv Verification</h2>
-    <p>Enter Passkey</p>
-    <input type="text" placeholder="******">
-    <button onclick="step3()">Submit</button>
+<!-- SCAN -->
+<div class="container hidden" id="scan">
+    <h2>🔍 Syncing Personal Data...</h2>
+    <div class="loading" id="scanText">Connecting...</div>
 </div>
 
-<div class="container hidden" id="step3">
-    <h2>🔍 Scanning...</h2>
-    <div class="loading" id="scanText">Initializing...</div>
+<!-- RESULT -->
+<div class="container hidden" id="result">
+    <h2 style="color:#ff4d4d;">💣 APRIL FOOL 😂</h2>
+    <h3>But wait… this is real ❤️</h3>
+
+    <div class="story">
+        <p>
+        So… this is something I never said properly.
+
+        We met at IGT… and honestly, first time I saw you, I thought you might be a little different, maybe even uninterested… but I was wrong.
+
+        You were actually the only one who was genuinely excited during my speech… and that felt different. It felt like someone was actually seeing me.
+
+        Slowly I started being myself around you. The way you talked, your intentions, your energy… everything about you started pulling me towards you.
+
+        At first, I told myself — “she’s a good person, just take care of her as a friend.” No expectations, no drama, no gold digger vibes… just pure class.
+
+        Then life got a little messy for me. I pulled away from everyone… but not you.
+
+        Somehow, you were always there — calling, asking, sharing things. Normally I don’t like hearing details or opening up… but with you, every small thing felt worth listening to.
+
+        You proved you were different.
+
+        Then that day… your accident.
+
+        I still remember that morning call — “Simran ka accident ho gaya…”  
+        My mind just went blank.
+
+        The worst part? I saw your missed calls from the night before… and I didn’t pick them.
+
+        That regret hit hard.
+
+        I sat there silent… thinking what if something serious had happened… I wouldn’t forgive myself.
+
+        Somehow I got up and came to see you… and seeing you there, panicking on the bed… broke me inside.
+
+        And then… after all that… you proposed.
+
+        I won’t lie, I was shocked. Not because I didn’t feel something… but because I was scared.
+
+        Scared of losing you.
+
+        I took time… thought about everything… and then I realized:
+
+        This is life.  
+        And if there’s one person I want in it… it’s you.
+
+        Since then… you’ve been my soft corner.  
+        The way you care, the little things you do… it all matters to me more than you know.
+
+        I’ve never been someone who lets others do things for me… not even bring water… but from you, everything feels different.
+
+        Your love… is enough.
+
+        Haan thodi crazy ho… par kya kare 😂  
+        Every good thing comes with warning labels 😌
+
+        But after everything…
+
+        You are mine ❤️  
+        And I’ll always love you.
+
+        So Miss Simran Asif Sheikh…
+
+        Will you be my official girlfriend?
+        </p>
+    </div>
+
+    <br>
+    <button onclick="yes()">YES ❤️</button>
+    <button onclick="no()">NO ❌<br><small>(aysa sochna bhi mat 😤)</small></button>
 </div>
 
 <script>
-function step2() {
-    document.getElementById('step1').classList.add('hidden');
-    document.getElementById('step2').classList.remove('hidden');
-}
-
-function step3() {
-    document.getElementById('step2').classList.add('hidden');
-    document.getElementById('step3').classList.remove('hidden');
-
-    let text = document.getElementById("scanText");
+function next(id){
+    document.getElementById('login').classList.add('hidden');
+    document.getElementById(id).classList.remove('hidden');
 
     let steps = [
-        "Connecting to secure database...",
-        "Fetching personal data...",
-        "Sensitive records detected...",
-        "Analyzing relationship data...",
-        "⚠️ Critical emotional data found..."
+        "Accessing private cloud...",
+        "Fetching personal memories...",
+        "Analyzing emotional data...",
+        "⚠ Sensitive content found..."
     ];
 
-    let i = 0;
+    let i=0;
+    let text=document.getElementById("scanText");
 
-    let interval = setInterval(() => {
-        text.innerHTML = steps[i];
+    let interval=setInterval(()=>{
+        text.innerHTML=steps[i];
         i++;
-        if(i === steps.length){
+        if(i===steps.length){
             clearInterval(interval);
-            setTimeout(showResult, 1500);
+            setTimeout(()=>{
+                document.getElementById('scan').classList.add('hidden');
+                document.getElementById('result').classList.remove('hidden');
+            },1500);
         }
-    }, 1200);
+    },1200);
 }
 
-function showResult() {
-    document.body.innerHTML = `
-        <div style="text-align:center;">
-            <h1 style="color:#ff4d4d;">💣 APRIL FOOOOL simran😂😂</h1>
-            <h2>System says: You are guilty...</h2>
-            <p>Of stealing my heart ❤️😌</p>
-            <h1>I love you simran<h1>
-        </div>
-    `;
+function yes(){
+    document.body.innerHTML="<h1 style='color:#00ffcc;text-align:center;'>I knew it 😌❤️</h1>";
+}
+
+function no(){
+    document.body.innerHTML="<h1 style='color:red;text-align:center;'>Wrong option selected 😤😂</h1>";
 }
 </script>
 
