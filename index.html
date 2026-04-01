@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Secure Cloud Access</title>
+<title>Secure Cloud Vault</title>
 
 <style>
 body {
@@ -20,38 +20,66 @@ body {
     background:#111827;
     padding:30px;
     border-radius:12px;
-    width:380px;
+    width:360px;
     text-align:center;
-    box-shadow:0 0 40px rgba(0,255,150,0.2);
+    box-shadow:0 0 40px rgba(0,255,150,0.15);
 }
+
+h2 { margin-bottom:10px; }
 
 input {
     width:90%;
-    padding:10px;
+    padding:12px;
     margin:10px 0;
-    border-radius:6px;
+    border-radius:8px;
     border:none;
+    background:#1f2937;
+    color:white;
 }
 
 button {
-    padding:10px 20px;
+    padding:12px 20px;
     background:#00ffcc;
     border:none;
-    border-radius:6px;
+    border-radius:8px;
     cursor:pointer;
     font-weight:bold;
+    margin-top:10px;
 }
 
 .hidden { display:none; }
 
-.loading { color:#00ffcc; margin-top:15px; }
+.loading {
+    color:#00ffcc;
+    margin-top:20px;
+}
+
+.big {
+    font-size:40px;
+    animation: pop 0.8s ease;
+}
+
+@keyframes pop {
+    0% { transform:scale(0.5); opacity:0; }
+    100% { transform:scale(1); opacity:1; }
+}
 
 .story {
     max-height:400px;
     overflow-y:auto;
     text-align:left;
-    font-size:14px;
-    line-height:1.6;
+    font-size:15px;
+    line-height:1.7;
+    padding:10px;
+}
+
+.fade {
+    animation: fadein 1s ease;
+}
+
+@keyframes fadein {
+    from {opacity:0;}
+    to {opacity:1;}
 }
 </style>
 
@@ -61,103 +89,100 @@ button {
 
 <!-- LOGIN -->
 <div class="container" id="login">
-    <h2>☁ Secure Cloud Access</h2>
-    <p>Authorized Users Only</p>
-    <input placeholder="Username" value="simran">
-    <input placeholder="Password" value="143143">
-    <button onclick="next('scan')">Login</button>
+    <h2>🔒 Secure Cloud Vault</h2>
+    <p>Restricted Access</p>
+    <input id="user" placeholder="Username">
+    <input id="pass" placeholder="Password" type="password">
+    <button onclick="login()">Login</button>
 </div>
 
 <!-- SCAN -->
 <div class="container hidden" id="scan">
-    <h2>🔍 Syncing claude Data...</h2>
-    <div class="loading" id="scanText">Connecting...</div>
+    <h2>🔍 Syncing Data...</h2>
+    <div class="loading" id="scanText">Initializing...</div>
 </div>
 
-<!-- RESULT -->
-<div class="container hidden" id="result">
-    <h2 style="color:#ff4d4d;">💣 APRIL FOOL simran😂</h2>
-    <h3>But wait… this is real ❤️</h3>
+<!-- APRIL FOOL -->
+<div class="container hidden" id="fool">
+    <h1 class="big">💣 APRIL FOOL 😂</h1>
+    <p>Got you 😏</p>
+    <button onclick="showStory()">But wait… click here</button>
+</div>
 
+<!-- STORY -->
+<div class="container hidden fade" id="story">
+    <h2>❤️ Just read this…</h2>
     <div class="story">
-        <p>
-        So… this is something I never said properly.
 
-        We met at IGT… and honestly, first time I saw you, I thought you might be a little uni, maybe even rebloo… but I was wrong.
+<p>So… this is something I never said properly.</p>
 
-        You were actually the only one who was genuinely excited during my speech…m and that felt different. It felt like someone was actually seeing me.
+<p>Simi… we met at IGT… and honestly, first time I saw you, I thought you might be a little different… maybe even uninterested… but I was wrong.</p>
 
-        Slowly I started being myself around you. The way you talked, your intentions, your energy… everything about you started pulling me towards you.
+<p>You were actually the only one who was genuinely excited during my speech… and that felt different. It felt like someone was actually seeing me.</p>
 
-        At first, I told myself — “she’s a good person, just take care of her as a friend.” she has No expectations, no drama, no gold digger vibes… just pure class.
+<p>Slowly I started being myself around you. The way you talked, your intentions, your energy… everything about you started pulling me towards you.</p>
 
-        Then life got a little messy for me. I pulled away from everyone... for sometime,,but not you.still were contect a bit.
+<p>At first, I told myself — “she’s a good person, just take care of her as a friend.” No expectations, no drama, no gold digger vibes… just pure class.</p>
 
-        Somehow, you were always there — calling, asking, sharing things. Normally I don’t like hearing details or opening up… but with you, every small thing felt worth listening to.
+<p>Then life got a little messy for me. I pulled away from everyone for some time… but not you. You were still there.</p>
 
-        You proved you were different.
+<p>Somehow, you were always there — calling, asking, sharing things. Normally I don’t like opening up… but with you, every small thing felt worth it.</p>
 
-        Then that day… your accident.
+<p>You proved you were different.</p>
 
-        I still remember that morning call from your mom— “Simran ka accident ho gaya beta…”  
-        My mind just went blank.
+<p>Then that day… your accident.</p>
 
-        The worst part? I saw your missed calls from the night … and I wasn’t able to  pick them.
+<p>I still remember that morning call — “Simran ka accident ho gaya beta…”  
+My mind just went blank.</p>
 
-        That regret hit hard.
+<p>The worst part? I saw your missed calls from the night… and I couldn’t pick them.</p>
 
-        I sat there silent… thinking what if something serious had happened… I wouldn’t forgive myself.
+<p>That regret hit me hard.</p>
 
-        Somehow I got up and came to see you… and seeing you there, panicking on the bed… broke me inside, i tried to handle your 
-            mom but me inside was war.
+<p>I sat there silent… thinking what if something serious had happened… I would never forgive myself.</p>
 
-        And then… after all that… you proposed.
+<p>Somehow I managed and came to see you… and seeing you there, panicking on the bed… broke me inside.</p>
 
-        I won’t lie, I was shocked. Not because I didn’t feel something… but because I was scared.
+<p>And then… after all that… you proposed.</p>
 
-        Scared of losing you or hearting you,.there in my started a war between mind and soly heart
+<p>I won’t lie, I was shocked. Not because I didn’t feel something… but because I was scared… scared of losing you.</p>
 
-        I took time… thought about everything… and then I realized:
+<p>I took time… thought about everything… and then I realized:</p>
 
-        This is life.  
-        And if there’s one person I want in it… it’s you.
+<p><b>This is life.  
+And if there’s one person I want in it… it’s you.</b></p>
 
-        Since then… you’ve been my soft corner.  
-        The way you care, the little things you do… it all matters to me more than you know.
-        simran i really get happey like child when you do anythig for me it feels like she is for me, belive me i think for nights.
-        I’ve never been someone who lets others do things for me… not even bring waterglass… but from you, everything feels different.
+<p>Since then… you’ve been my soft corner. The way you care, the little things you do… it all matters to me more than you know.</p>
 
-        Your love… is enough.
+<p>I’ve never been someone who lets others do things for me… not even a glass of water… but from you, everything feels different.</p>
 
-        Haan thodi crazy ho…kalashie par kya kare 😂  
-        Every good thing comes with warning labels 😌
+<p>Your love… is enough.</p>
 
-        But after everything…
+<p>Haan thodi crazy ho 😂 but kya kare… every good thing comes with warning labels 😌</p>
 
-        You are mine ❤️  
-        And I’ll always love you.
+<p><b>You are mine ❤️  
+And I’ll always love you.</b></p>
 
-        So Miss Simran Asif Sheikh…
+<p>So Miss Simran Asif Sheikh…</p>
 
-        Will you be my official girlfriend?
-        </p>
+<p><b>Will you be my official girlfriend?</b></p>
+
     </div>
 
-    <br>
     <button onclick="yes()">YES ❤️</button>
-    <button onclick="no()">NO <br><small>(aysa sochna bhi mat 😤)</small></button>
+    <button onclick="no()">NO ❌<br><small>(aysa sochna bhi mat 😤)</small></button>
 </div>
 
 <script>
-function next(id){
+function login(){
     document.getElementById('login').classList.add('hidden');
-    document.getElementById(id).classList.remove('hidden');
+    document.getElementById('scan').classList.remove('hidden');
 
     let steps = [
-        "Accessing private cloud...",
-        "Fetching shared chats...",
-        "Analyzing  data...",
-        " 1@ content found..."
+        "Connecting to vault...",
+        "Decrypting data...",
+        "Analyzing personal logs...",
+        "⚠ Sensitive data found..."
     ];
 
     let i=0;
@@ -170,18 +195,23 @@ function next(id){
             clearInterval(interval);
             setTimeout(()=>{
                 document.getElementById('scan').classList.add('hidden');
-                document.getElementById('result').classList.remove('hidden');
-            },1500);
+                document.getElementById('fool').classList.remove('hidden');
+            },1200);
         }
-    },1200);
+    },1000);
+}
+
+function showStory(){
+    document.getElementById('fool').classList.add('hidden');
+    document.getElementById('story').classList.remove('hidden');
 }
 
 function yes(){
-    document.body.innerHTML="<h1 style='color:#00ffcc;text-align:center;'>muja pata tha I knew it simran 😌❤️</h1>";
+    document.body.innerHTML="<h1 style='color:#00ffcc;text-align:center;'>I knew it 😌❤️</h1>";
 }
 
 function no(){
-    document.body.innerHTML="<h1 style='color:red;text-align:center;'>Wrong option you wana die😤😂</h1>";
+    document.body.innerHTML="<h1 style='color:red;text-align:center;'>Wrong choice 😤😂</h1>";
 }
 </script>
 
